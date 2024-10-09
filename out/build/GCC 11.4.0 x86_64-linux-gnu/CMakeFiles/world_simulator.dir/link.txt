@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/world_simulator.dir/Map.cpp.o CMakeFiles/world_simulator.dir/Organism.cpp.o CMakeFiles/world_simulator.dir/OrganismsManager.cpp.o CMakeFiles/world_simulator.dir/Sheep.cpp.o CMakeFiles/world_simulator.dir/Wolf.cpp.o CMakeFiles/world_simulator.dir/WorldSimulator.cpp.o CMakeFiles/world_simulator.dir/main.cpp.o -o world_simulator 

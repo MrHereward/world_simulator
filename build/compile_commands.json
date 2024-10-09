@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/oliwier/Projects/world_simulator/build",
+  "command": "/usr/bin/c++ -g -o CMakeFiles/world_simulator.dir/main.cpp.o -c /home/oliwier/Projects/world_simulator/main.cpp",
+  "file": "/home/oliwier/Projects/world_simulator/main.cpp"
+},
+{
+  "directory": "/home/oliwier/Projects/world_simulator/build",
+  "command": "/usr/bin/c++ -g -o CMakeFiles/world_simulator.dir/WorldSimulator.cpp.o -c /home/oliwier/Projects/world_simulator/WorldSimulator.cpp",
+  "file": "/home/oliwier/Projects/world_simulator/WorldSimulator.cpp"
+}
+]
