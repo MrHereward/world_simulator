@@ -9,4 +9,7 @@ class Grass : public Plant {
         void proliferate(Map*) override;
 
         ~Grass() = default;
+    
+    private:
+        //static int amountOfInstances; //TO DO - segmentation fault
 };
