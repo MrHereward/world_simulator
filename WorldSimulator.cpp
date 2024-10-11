@@ -3,7 +3,7 @@
 #include <iostream>
 
 WorldSimulator::WorldSimulator() {
-    map = new Map(3, 3);
+    map = new Map(10, 10);
     organismsManager = new OrganismsManager(map);
 }
 
@@ -14,8 +14,7 @@ void WorldSimulator::run() {
     do {
         std::system("clear");
 
-        organismsManager->move();
-        organismsManager->interact();
+        organismsManager->update();
         map->print();
 
         std::cout << "1. Next round\n";

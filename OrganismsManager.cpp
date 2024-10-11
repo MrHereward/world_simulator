@@ -1,30 +1,28 @@
 #include "OrganismsManager.h"
 
-#include "Animal.h"
 #include "Sheep.h"
 #include "Wolf.h"
+#include "Grass.h"
 
 #include <algorithm>
 
 OrganismsManager::OrganismsManager(Map* map)
     : map{ map } {
-    organisms.push_back(new Sheep(0, 0, this));
-    organisms.push_back(new Wolf(0, 0, this));
+    addOrganism(new Sheep(0, 0, this));
+    addOrganism(new Sheep(0, 0, this));
+    addOrganism(new Sheep(0, 0, this));
+    addOrganism(new Sheep(0, 0, this));
+    addOrganism(new Sheep(0, 0, this));
+    addOrganism(new Grass(5, 5, this));
 }
 
-void OrganismsManager::move() {
+void OrganismsManager::update() {
     for (auto& organism : organisms) {
         if (auto animal = dynamic_cast<Animal*>(organism)) {
             map->removeOrganism(animal);
             animal->move(map);
             map->addOrganism(animal);
-        }
-    }
-}
 
-void OrganismsManager::interact() {
-    for (auto& organism : organisms) {
-        if (auto animal = dynamic_cast<Animal*>(organism)) {
             for (auto& otherOrganism : organisms) {
                 if (organism != otherOrganism && 
                 organism->getPositionX() == otherOrganism->getPositionX() && 
@@ -32,6 +30,8 @@ void OrganismsManager::interact() {
                     animal->interact(otherOrganism);
                 }
             }
+        } else if (auto plant = dynamic_cast<Plant*>(organism)) {
+            plant->proliferate(map);
         }
     }
 }

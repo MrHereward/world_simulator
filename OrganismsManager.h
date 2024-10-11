@@ -8,10 +8,9 @@ class OrganismsManager {
     public:
         OrganismsManager(Map*);
 
-        void move();
-        void interact();
         void addOrganism(Organism*);
         void removeOrganism(Organism*);
+        void update();
 
         ~OrganismsManager();
 
