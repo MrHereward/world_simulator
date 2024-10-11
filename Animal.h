@@ -5,8 +5,10 @@
 
 class Animal : public Organism {
     public:
-        virtual void move(Map* map) = 0;
-        virtual void interact(Organism* organism) = 0;
+        virtual void breed() const = 0;
+        virtual void move(Map*) = 0;
+        virtual void interact(Organism*) = 0;
+        virtual void eat(Organism*) = 0;
 
         virtual ~Animal() = default;
 };

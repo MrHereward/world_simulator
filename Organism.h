@@ -4,8 +4,6 @@ class OrganismsManager;
 
 class Organism {
     public:
-        virtual void breed() const = 0;
-
         int getPositionX() const;
         void setPositionX(int);
         int getPositionY() const;
