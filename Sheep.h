@@ -9,6 +9,7 @@ class Sheep : public Herbivore {
         void breed() const override;
         void move(Map*) override;
         void interact(Organism*) override;
+        void eat(Organism*) override;
 
         ~Sheep() = default;
 };

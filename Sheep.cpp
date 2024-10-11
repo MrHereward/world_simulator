@@ -1,6 +1,6 @@
 #include "Sheep.h"
-
 #include "OrganismsManager.h"
+#include "Grass.h"
 
 #include <cstdlib>
 
@@ -27,10 +27,6 @@ void Sheep::move(Map* map) {
 
     positionX += x;
     positionY += y;
-    
-    if (energy < 100) {
-        energy += 10;
-    }
 }
 
 void Sheep::interact(Organism* organism) {
@@ -40,5 +36,12 @@ void Sheep::interact(Organism* organism) {
             energy -= 50;
             sheep->setEnergy(sheep->getEnergy() - 50);
         }
+    } else if (auto plant = dynamic_cast<Grass*>(organism)) {
+        eat(organism);
     }
+}
+
+void Sheep::eat(Organism* organism) {
+    energy += 50;
+    organismsManager->removeOrganism(organism);
 }
