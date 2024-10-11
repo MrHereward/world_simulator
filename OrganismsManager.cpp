@@ -8,11 +8,10 @@
 
 OrganismsManager::OrganismsManager(Map* map)
     : map{ map } {
-    addOrganism(new Sheep(0, 0, this));
-    addOrganism(new Sheep(0, 0, this));
-    addOrganism(new Sheep(0, 0, this));
-    addOrganism(new Sheep(0, 0, this));
-    addOrganism(new Sheep(0, 0, this));
+    addOrganism(new Sheep(0, 0, this, Sex::male));
+    addOrganism(new Sheep(0, 0, this, Sex::female));
+    addOrganism(new Wolf(0, 0, this, Sex::male));
+    addOrganism(new Wolf(0, 0, this, Sex::female));
     addOrganism(new Grass(5, 5, this));
 }
 

@@ -10,10 +10,20 @@ Sheep::Sheep(int positionX, int positionY, OrganismsManager* organismsManager) {
     this->energy = 0;
     this->symbol = 'S';
     this->organismsManager = organismsManager;
+    this->sex = rand() % 1 == 0 ? Sex::male : Sex::female;
 }
 
-void Sheep::breed() const {
-    organismsManager->addOrganism(new Sheep(positionX, positionY, organismsManager));
+Sheep::Sheep(int positionX, int positionY, OrganismsManager* organismsManager, Sex sex)
+    : Sheep(positionX, positionY, organismsManager) {
+    this->sex = sex;
+}
+
+void Sheep::breed(Animal* animal) {
+    if (energy >= 50 && animal->getEnergy() >= 50  && sex != animal->getSex()) {
+        energy -= 50;
+        animal->setEnergy(animal->getEnergy() - 50);
+        organismsManager->addOrganism(new Sheep(positionX, positionY, organismsManager));
+    }
 }
 
 void Sheep::move(Map* map) {
@@ -31,13 +41,9 @@ void Sheep::move(Map* map) {
 
 void Sheep::interact(Organism* organism) {
     if (auto sheep = dynamic_cast<Sheep*>(organism)) {
-        if (energy >= 50 && sheep->getEnergy() >= 50) {
-            breed();
-            energy -= 50;
-            sheep->setEnergy(sheep->getEnergy() - 50);
-        }
+        breed(sheep);
     } else if (auto plant = dynamic_cast<Grass*>(organism)) {
-        eat(organism);
+        eat(plant);
     }
 }
 
