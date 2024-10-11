@@ -11,6 +11,7 @@ class Map {
         void addOrganism(Organism*);
         void removeOrganism(Organism*);
         void print() const;
+        void printList() const;
 
         int getLength() const;
         int getWidth() const;

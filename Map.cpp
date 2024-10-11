@@ -37,6 +37,16 @@ void Map::print() const {
     }
 }
 
+void Map::printList() const {
+    for (const auto& line : grid) {
+        for (const auto& field : line) {
+            for (const auto& organism : field) {
+                std::cout << organism->getSymbol() << ": (" << organism->getPositionY() << ", " << organism->getPositionX() << ")\n"; 
+            }
+        }
+    }
+}
+
 int Map::getLength() const {
     return length;
 }
