@@ -5,7 +5,7 @@
 
 class Plant : public Organism {
     public:
-        virtual void proliferate(Map* map) = 0;
+        virtual void proliferate(Map*) = 0;
 
         virtual ~Plant() = default;
 };
