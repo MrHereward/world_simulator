@@ -4,18 +4,12 @@
 
 #include <cstdlib>
 
-Sheep::Sheep(int positionX, int positionY, OrganismsManager* organismsManager) {
-    this->positionX = positionX;
-    this->positionY = positionY;
-    this->energy = 0;
-    this->symbol = 'S';
-    this->organismsManager = organismsManager;
-    this->sex = rand() % 1 == 0 ? Sex::male : Sex::female;
+Sheep::Sheep(int positionX, int positionY, OrganismsManager* organismsManager)
+    : Herbivore(positionX, positionY, 0, 'S', organismsManager, rand() % 1 == 0 ? Sex::male : Sex::female) {
 }
 
 Sheep::Sheep(int positionX, int positionY, OrganismsManager* organismsManager, Sex sex)
-    : Sheep(positionX, positionY, organismsManager) {
-    this->sex = sex;
+    : Herbivore(positionX, positionY, 0, 'S', organismsManager, sex) {
 }
 
 void Sheep::breed(Animal* animal) {

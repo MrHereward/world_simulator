@@ -4,6 +4,8 @@ class OrganismsManager;
 
 class Organism {
     public:
+        Organism(int, int, int, char, OrganismsManager*);
+
         int getPositionX() const;
         void setPositionX(int);
         int getPositionY() const;

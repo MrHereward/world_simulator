@@ -9,6 +9,8 @@ enum class Sex : unsigned char {
 
 class Animal : public Organism {
     public:
+        Animal(int, int, int, char, OrganismsManager*, Sex);
+
         virtual void breed(Animal*) = 0;
         virtual void move(Map*) = 0;
         virtual void interact(Organism*) = 0;

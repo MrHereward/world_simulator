@@ -5,18 +5,12 @@
 
 #include <cstdlib>
 
-Wolf::Wolf(int positionX, int positionY, OrganismsManager* organismsManager) {
-    this->positionX = positionX;
-    this->positionY = positionY;
-    this->energy = 0;
-    this->symbol = 'W';
-    this->organismsManager = organismsManager;
-    this->sex = rand() % 1 == 0 ? Sex::male : Sex::female;
+Wolf::Wolf(int positionX, int positionY, OrganismsManager* organismsManager)
+    : Carnivore(positionX, positionY, 0, 'W', organismsManager, rand() % 1 == 0 ? Sex::male : Sex::female) {
 }
 
 Wolf::Wolf(int positionX, int positionY, OrganismsManager* organismsManager, Sex sex) 
-    : Wolf(positionX, positionY, organismsManager) {
-    this->sex = sex;
+    : Carnivore(positionX, positionY, 0, 'W', organismsManager, sex) {
 }
 
 void Wolf::breed(Animal* animal) {

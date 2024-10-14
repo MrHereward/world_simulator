@@ -8,8 +8,8 @@ class Grass : public Plant {
 
         void proliferate(Map*) override;
 
-        ~Grass() = default;
+        ~Grass();
     
     private:
-        //static int amountOfInstances; //TO DO - segmentation fault
+        static int amountOfInstances;
 };

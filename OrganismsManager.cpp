@@ -8,29 +8,35 @@
 
 OrganismsManager::OrganismsManager(Map* map)
     : map{ map } {
-    //addOrganism(new Sheep(0, 0, this, Sex::male));
-    //addOrganism(new Sheep(0, 0, this, Sex::female));
-    //addOrganism(new Wolf(0, 0, this, Sex::male));
-    //addOrganism(new Wolf(0, 0, this, Sex::female));
-    addOrganism(new Grass(2, 2, this));
+    addOrganism(new Sheep(0, 0, this, Sex::male));
+    addOrganism(new Sheep(0, 0, this, Sex::male));
+    addOrganism(new Sheep(1, 1, this, Sex::male));
+    addOrganism(new Sheep(1, 1, this, Sex::female));
+    addOrganism(new Sheep(2, 2, this, Sex::female));
+    addOrganism(new Sheep(2, 2, this, Sex::female));
+    addOrganism(new Wolf(3, 3, this, Sex::male));
+    addOrganism(new Wolf(4, 4, this, Sex::female));
+    addOrganism(new Grass(9, 9, this));
 }
 
 void OrganismsManager::update() {
     for (auto& organism : organisms) {
-        if (auto animal = dynamic_cast<Animal*>(organism)) {
-            map->removeOrganism(animal);
-            animal->move(map);
-            map->addOrganism(animal);
+        if (organism) {
+            if (auto animal = dynamic_cast<Animal*>(organism)) {
+                map->removeOrganism(animal);
+                animal->move(map);
+                map->addOrganism(animal);
 
-            for (auto& otherOrganism : organisms) {
-                if (organism != otherOrganism && 
-                organism->getPositionX() == otherOrganism->getPositionX() && 
-                organism->getPositionY() == otherOrganism->getPositionY()) {
-                    animal->interact(otherOrganism);
+                for (auto& otherOrganism : organisms) {
+                    if (organism != otherOrganism && 
+                    organism->getPositionX() == otherOrganism->getPositionX() && 
+                    organism->getPositionY() == otherOrganism->getPositionY()) {
+                        animal->interact(otherOrganism);
+                    }
                 }
+            } else if (auto plant = dynamic_cast<Plant*>(organism)) {
+                plant->proliferate(map);
             }
-        } else if (auto plant = dynamic_cast<Plant*>(organism)) {
-            plant->proliferate(map);
         }
     }
 }

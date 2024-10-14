@@ -1,5 +1,9 @@
 #include "Organism.h"
 
+Organism::Organism(int positionX, int positionY, int energy, char symbol, OrganismsManager* organismsManager) 
+    : positionX{ positionX }, positionY{ positionY }, energy{ energy }, symbol{ symbol }, organismsManager{ organismsManager } {
+}
+
 int Organism::getPositionX() const
 {
     return positionX;
