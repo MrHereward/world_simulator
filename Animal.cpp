@@ -4,7 +4,6 @@ Animal::Animal(int positionX, int positionY, int energy, char symbol, OrganismsM
     : Organism(positionX, positionY, energy, symbol, organismsManager), sex{ sex } {
 }
 
-Sex Animal::getSex() const
-{
+Sex Animal::getSex() const {
     return sex;
 }

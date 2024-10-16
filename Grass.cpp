@@ -10,7 +10,7 @@ Grass::Grass(int positionX, int positionY, OrganismsManager* organismsManager)
     ++amountOfInstances;
 }
 
-void Grass::proliferate(Map* map) {
+void Grass::proliferate(Map* map) const {
     int x;
     int y;
 

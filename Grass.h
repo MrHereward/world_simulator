@@ -6,7 +6,7 @@ class Grass : public Plant {
     public:
         Grass(int, int, OrganismsManager*);
 
-        void proliferate(Map*) override;
+        void proliferate(Map*) const override;
 
         ~Grass();
     

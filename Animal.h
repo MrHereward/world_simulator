@@ -21,5 +21,5 @@ class Animal : public Organism {
         virtual ~Animal() = default;
 
     protected:
-        Sex sex;
+        const Sex sex;
 };

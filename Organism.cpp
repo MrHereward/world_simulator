@@ -4,8 +4,7 @@ Organism::Organism(int positionX, int positionY, int energy, char symbol, Organi
     : positionX{ positionX }, positionY{ positionY }, energy{ energy }, symbol{ symbol }, organismsManager{ organismsManager } {
 }
 
-int Organism::getPositionX() const
-{
+int Organism::getPositionX() const {
     return positionX;
 }
 

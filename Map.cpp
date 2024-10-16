@@ -9,13 +9,11 @@ Map::Map(int length, int width)
 
 }
 
-void Map::addOrganism(Organism *organism)
-{
+void Map::addOrganism(Organism *organism) {
     grid[organism->getPositionY()][organism->getPositionX()].push_back(organism);
 }
 
-void Map::removeOrganism(Organism *organism)
-{
+void Map::removeOrganism(Organism *organism) {
     int y = organism->getPositionY();
     int x = organism->getPositionX();
     grid[y][x].erase(std::remove(grid[y][x].begin(), grid[y][x].end(), organism), grid[y][x].end());

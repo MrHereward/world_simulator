@@ -21,5 +21,5 @@ class Organism {
         int positionX;
         int positionY;
         int energy;
-        char symbol;
+        const char symbol;
 };
