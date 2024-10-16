@@ -14,29 +14,31 @@ OrganismsManager::OrganismsManager(Map* map)
     addOrganism(new Sheep(1, 1, this, Sex::female));
     addOrganism(new Sheep(2, 2, this, Sex::female));
     addOrganism(new Sheep(2, 2, this, Sex::female));
-    addOrganism(new Wolf(3, 3, this, Sex::male));
-    addOrganism(new Wolf(4, 4, this, Sex::female));
+    addOrganism(new Grass(0, 0, this));
+    addOrganism(new Grass(2, 2, this));
+    addOrganism(new Grass(5, 5, this));
+    addOrganism(new Grass(7, 7, this));
     addOrganism(new Grass(9, 9, this));
+    addOrganism(new Wolf(9, 9, this, Sex::male));
+    addOrganism(new Wolf(9, 9, this, Sex::female));
 }
 
 void OrganismsManager::update() {
-    for (auto& organism : organisms) {
-        if (organism) {
-            if (auto animal = dynamic_cast<Animal*>(organism)) {
-                map->removeOrganism(animal);
-                animal->move(map);
-                map->addOrganism(animal);
+    for (int i = 0; i < organisms.size(); ++i) {
+        if (auto animal = dynamic_cast<Animal*>(organisms[i])) {
+            map->removeOrganism(animal);
+            animal->move(map);
+            map->addOrganism(animal);
 
-                for (auto& otherOrganism : organisms) {
-                    if (organism != otherOrganism && 
-                    organism->getPositionX() == otherOrganism->getPositionX() && 
-                    organism->getPositionY() == otherOrganism->getPositionY()) {
-                        animal->interact(otherOrganism);
-                    }
+            for (int j = 0; j < organisms.size(); ++j) {
+                if (i != j && 
+                animal->getPositionX() == organisms[j]->getPositionX() && 
+                animal->getPositionY() == organisms[j]->getPositionY()) {
+                    animal->interact(organisms[j]);
                 }
-            } else if (auto plant = dynamic_cast<Plant*>(organism)) {
-                plant->proliferate(map);
             }
+        } else if (auto plant = dynamic_cast<Plant*>(organisms[i])) {
+            plant->proliferate(map);
         }
     }
 }
